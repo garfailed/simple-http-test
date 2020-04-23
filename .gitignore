@@ -1,0 +1,20 @@
+# IntelliJ
+./out
+.idea/*
+!/.idea/runConfigurations
+*.iml
+*.iws
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Maven
+log/
+target/
+
+#Miscellaneous
+application-dev.yml
+tomcat-access-logs
+*.log
