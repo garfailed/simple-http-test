@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Properties;
 
-@WebServlet("/ajax")
+@WebServlet(urlPatterns = "/ajax")
 public class AjaxResponseController extends HttpServlet {
 
     @Override
@@ -19,9 +19,8 @@ public class AjaxResponseController extends HttpServlet {
         String serverMessage = properties.getProperty("serverMessage");
         String responseMessage = String.format(serverMessage, name);
 
-        resp.getWriter().println(responseMessage);
+        resp.setCharacterEncoding("UTF-8");
         resp.setContentType("text/plain");
-
-        throw new IllegalStateException();
+        resp.getWriter().println(responseMessage);
     }
 }

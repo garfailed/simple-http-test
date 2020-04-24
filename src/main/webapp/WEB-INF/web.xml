@@ -6,6 +6,12 @@
     <session-config>
         <tracking-mode>URL</tracking-mode>
     </session-config>
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>/*</url-pattern>
+            <trim-directive-whitespaces>true</trim-directive-whitespaces>
+        </jsp-property-group>
+    </jsp-config>
     <error-page>
         <location>/error.jsp</location>
     </error-page>
