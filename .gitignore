@@ -1,5 +1,5 @@
 # IntelliJ
-./out
+out
 .idea/*
 !/.idea/runConfigurations
 *.iml
@@ -13,6 +13,7 @@
 # Maven
 log/
 target/
+*.class
 
 #Miscellaneous
 application-dev.yml
