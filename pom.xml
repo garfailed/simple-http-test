@@ -23,6 +23,7 @@
     </properties>
 
     <dependencies>
+        <!-- Java EE related dependencies-->
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>

@@ -1,19 +1,34 @@
 package com.danielszabo.app;
 
+import com.danielszabo.app.util.LatencyUtil;
+import com.danielszabo.app.util.LoggingUtil;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicInteger;
 
-@WebServlet(urlPatterns = "/long-request", asyncSupported = true)
+@WebServlet("/long-request")
 public class LongRunningServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        LoggingUtil.prettyPrintMessage("Entered the [/long-request] controller.");
         String timeout = request.getParameter("timeout");
+        var session = request.getSession();
+        var hitCounter = (AtomicInteger) session.getAttribute("hitCounter");
+
+        if (hitCounter == null) {
+            hitCounter = new AtomicInteger(1);
+            session.setAttribute("hitCounter", hitCounter);
+        } else {
+            hitCounter.incrementAndGet();
+        }
 
         if (timeout == null || timeout.isBlank()) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "The mandatory [timeout] request parameter is missing.");
+            LoggingUtil.prettyPrintMessage("The timeout parameter was missing. Request processing ends early.");
             return;
         }
 
@@ -21,15 +36,16 @@ public class LongRunningServlet extends HttpServlet {
         try {
             timeoutMilliseconds = Integer.parseInt(timeout);
         } catch (NumberFormatException e) {
-            System.err.println(String.format("The user sent an invalid timeout value [%s].", timeout));
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "The [timeout] parameter value was not a valid integer.");
+            LoggingUtil.prettyPrintMessage("The timeout parameter was invalid. Request processing ends early.");
             return;
         }
-        try {
-            Thread.sleep(timeoutMilliseconds);
-            response.getWriter().print(String.format("This request waited for %s milliseconds.", timeoutMilliseconds));
-        } catch (InterruptedException e) {
-            System.err.println("Somehow this sleeping thread has been interrupted." + e.getMessage());
-        }
+
+        response.setContentType("text/plain");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().println(LatencyUtil.simulateLatency(timeoutMilliseconds));
+        response.getWriter().println(String.format("Request count in this session is [%d].", hitCounter.get()));
+        response.getWriter().println(String.format("Is new session: [%s]", session.isNew()));
+        LoggingUtil.prettyPrintMessage("Finished processing in the [/long-request] controller.");
     }
 }
