@@ -20,6 +20,8 @@
         <jsp-api.version>2.3.6</jsp-api.version>
         <jstl.version>1.2.5</jstl.version>
         <tomcat.version>9.0.34</tomcat.version>
+        <commons-dbutils.version>1.7</commons-dbutils.version>
+        <postgresql.version>42.2.14</postgresql.version>
     </properties>
 
     <dependencies>
@@ -45,6 +47,18 @@
             <groupId>org.apache.taglibs</groupId>
             <artifactId>taglibs-standard-impl</artifactId>
             <version>${jstl.version}</version>
+        </dependency>
+
+        <!-- Database related dependencies -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-dbutils</groupId>
+            <artifactId>commons-dbutils</artifactId>
+            <version>${commons-dbutils.version}</version>
         </dependency>
     </dependencies>
 </project>
