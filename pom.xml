@@ -21,7 +21,7 @@
         <jstl.version>1.2.5</jstl.version>
         <tomcat.version>9.0.34</tomcat.version>
         <commons-dbutils.version>1.7</commons-dbutils.version>
-        <postgresql.version>42.2.14</postgresql.version>
+        <postgresql.version>42.3.3</postgresql.version>
     </properties>
 
     <dependencies>
