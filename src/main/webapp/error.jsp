@@ -5,7 +5,7 @@
     <title>Error page</title>
 </head>
 <body>
-<p>${requestScope.get('javax.servlet.error.message')}<p>
+<p>${requestScope.get('jakarta.servlet.error.message')}<p>
 <p><c:out value="Hello from a JSTL tag."/></p>
 </body>
 </html>
