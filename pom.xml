@@ -19,7 +19,7 @@
         <jstl.version>1.2.5</jstl.version>
         <commons-dbutils.version>1.7</commons-dbutils.version>
         <tomcat.version>10.0.2</tomcat.version>
-        <postgresql.version>42.3.3</postgresql.version>
+        <postgresql.version>42.4.1</postgresql.version>
         <HikariCP.version>3.4.5</HikariCP.version>
     </properties>
 
