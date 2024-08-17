@@ -13,7 +13,7 @@
 <button id="test-button">Press this for a message</button>
 </body>
 <script>
-    document.querySelector('#test-button').addEventListener('click', event => {
+    document.querySelector('#test-button').addEventListener('click', () => {
         alert('Hello from JavaScript!');
     });
 </script>

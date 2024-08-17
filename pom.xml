@@ -12,23 +12,22 @@
     <properties>
         <!-- Maven settings -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>22</maven.compiler.source>
+        <maven.compiler.target>22</maven.compiler.target>
         <!-- Maven plugin versions -->
-        <!-- https://search.maven.org/artifact/org.apache.maven.plugins/maven-war-plugin -->
-        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
+        <!-- https://central.sonatype.com/artifact/org.apache.maven.plugins/maven-war-plugin -->
+        <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
 
         <!-- Dependencies -->
-        <!-- https://search.maven.org/artifact/org.apache.taglibs/taglibs-standard-spec -->
+        <!-- https://central.sonatype.com/artifact/org.apache.taglibs/taglibs-standard-spec -->
         <jstl.version>1.2.5</jstl.version>
-        <commons-dbutils.version>1.7</commons-dbutils.version>
-        <!-- https://search.maven.org/artifact/org.apache.tomcat/tomcat-catalina -->
+        <!-- https://central.sonatype.com/artifact/commons-dbutils/commons-dbutils -->
+        <commons-dbutils.version>1.8.1</commons-dbutils.version>
         <!-- Not embedded -->
-        <tomcat.version>10.0.23</tomcat.version>
-        <!-- https://search.maven.org/artifact/org.postgresql/postgresql -->
-        <postgresql.version>42.7.2</postgresql.version>
-        <!-- https://search.maven.org/artifact/com.zaxxer/HikariCP -->
-        <hikaricp.version>5.0.1</hikaricp.version>
+        <!-- https://central.sonatype.com/artifact/org.apache.tomcat/tomcat-catalina -->
+        <tomcat.version>10.1.28</tomcat.version>
+        <!-- https://central.sonatype.com/artifact/org.postgresql/postgresql -->
+        <postgresql.version>42.7.3</postgresql.version>
     </properties>
 
     <dependencies>
@@ -61,11 +60,6 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.zaxxer</groupId>
-            <artifactId>HikariCP</artifactId>
-            <version>${hikaricp.version}</version>
         </dependency>
     </dependencies>
 
